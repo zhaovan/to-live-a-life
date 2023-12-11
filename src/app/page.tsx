@@ -134,24 +134,28 @@ const story = [
 const endStateStory = [
   "in death, the second law of thermodynamics is broken",
   "if humans are bundles of complexity, then what is death?",
-  "it breaks entropy",
-  "there is no energy from scattered stardust.",
+  "a breakage of entropy",
+  "there is no energy in scattered stardust",
   "only stillness",
 ];
 
 export default function Home() {
   const [step, setStep] = useState(0);
   const [journey, setJourney] = useState<string[]>([]);
+
   const textRef = useRef<HTMLParagraphElement>(null);
   const [endState, setEndState] = useState(false);
+  const [endStateStep, setEndStateStep] = useState(0);
 
   function handleClick() {
     if (textRef.current) {
       const text = textRef.current.innerText;
       setJourney([...journey, text]);
     }
-
-    setStep(step + 1);
+    if (step === story.length - 1) {
+      setEndState(true);
+    }
+    setStep(Math.min(step + 1, story.length - 1));
   }
 
   const maxAge = story[step].age;
@@ -162,7 +166,12 @@ export default function Home() {
       <div className="w-[66vw] border border-black p-6 flex items-center justify-center">
         <div className="w-1/2 flex flex-col gap-2">
           {endState ? (
-            <></>
+            <>
+              <p>{endStateStory[endStateStep]}</p>
+              <Button handleClick={() => setEndStateStep(endStateStep + 1)}>
+                ...
+              </Button>
+            </>
           ) : (
             <>
               <h1 className="text-lg">you are {randomAge} years old</h1>
