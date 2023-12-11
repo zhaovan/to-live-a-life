@@ -84,12 +84,66 @@ const story = [
       },
     ],
   },
+  {
+    age: 60,
+    textBlock: [
+      {
+        text: "the [INSERT] crack happens. it had been happening over the years, but now it’s louder, pulsing",
+        textOptions: ["first", "third", "fifth", "one hundredth"],
+      },
+    ],
+  },
+  {
+    age: 70,
+    textBlock: [
+      {
+        text: "placeholder",
+        textOptions: ["placeholder"],
+      },
+    ],
+  },
+  {
+    age: 80,
+    textBlock: [
+      {
+        text: "somedays, a little [INSERT] matters",
+        textOptions: ["card", "lunch", "life"],
+      },
+    ],
+  },
+  {
+    age: 90,
+    textBlock: [
+      {
+        text: "everyone you love has died. you too, shall pass. their memories live within you.",
+        textOptions: [],
+      },
+    ],
+  },
+  {
+    age: 100,
+    textBlock: [
+      {
+        text: "when he turned this age, he wished that he could be born again. what did he mean by that?",
+        textOptions: [],
+      },
+    ],
+  },
+];
+
+const endStateStory = [
+  "in death, the second law of thermodynamics is broken",
+  "if humans are bundles of complexity, then what is death?",
+  "it breaks entropy",
+  "there is no energy from scattered stardust.",
+  "only stillness",
 ];
 
 export default function Home() {
   const [step, setStep] = useState(0);
-  const [journey, setJourney] = useState([]);
+  const [journey, setJourney] = useState<string[]>([]);
   const textRef = useRef<HTMLParagraphElement>(null);
+  const [endState, setEndState] = useState(false);
 
   function handleClick() {
     if (textRef.current) {
@@ -107,36 +161,43 @@ export default function Home() {
     <div className="h-screen w-full flex gap-6 p-6 font-facade bg-gray-300">
       <div className="w-[66vw] border border-black p-6 flex items-center justify-center">
         <div className="w-1/2 flex flex-col gap-2">
-          <h1 className="text-lg">you are {randomAge} years old</h1>
-          <p className="font-serif" ref={textRef}>
-            {story[step].textBlock.map((textBlock, idx) => {
-              const randomOption = Math.floor(
-                Math.random() * textBlock.textOptions.length
-              );
-              const lifeChoice = textBlock.text.replace(
-                "[INSERT]",
-                textBlock.textOptions[randomOption]
-              );
-
-              return <span key={idx}>{lifeChoice}</span>;
-            })}
-          </p>
-
-          {story[step].buttonOptions && story[step].buttonOptions.length > 0 ? (
-            story[step].buttonOptions!.map((buttonOption, idx) => {
-              return (
-                <Button key={idx} handleClick={handleClick}>
-                  {buttonOption}
-                </Button>
-              );
-            })
+          {endState ? (
+            <></>
           ) : (
-            <Button handleClick={handleClick}>go on</Button>
+            <>
+              <h1 className="text-lg">you are {randomAge} years old</h1>
+              <p className="font-serif" ref={textRef}>
+                {story[step].textBlock.map((textBlock, idx) => {
+                  const randomOption = Math.floor(
+                    Math.random() * textBlock.textOptions.length
+                  );
+                  const lifeChoice = textBlock.text.replace(
+                    "[INSERT]",
+                    textBlock.textOptions[randomOption]
+                  );
+
+                  return <span key={idx}>{lifeChoice}</span>;
+                })}
+              </p>
+
+              {story[step].buttonOptions &&
+              story[step].buttonOptions.length > 0 ? (
+                story[step].buttonOptions!.map((buttonOption, idx) => {
+                  return (
+                    <Button key={idx} handleClick={handleClick}>
+                      {buttonOption}
+                    </Button>
+                  );
+                })
+              ) : (
+                <Button handleClick={handleClick}>go on</Button>
+              )}
+            </>
           )}
         </div>
       </div>
       <div className="border border-gray-700 w-[33vw] p-6 flex flex-col gap-4">
-        <h1 className="text-2xl">your journey so far</h1>
+        <h1 className="text-2xl">your journey</h1>
         <div className="flex flex-col gap-2">
           {journey.map((journeyItem, idx) => {
             return <p key={idx}>{journeyItem}</p>;
