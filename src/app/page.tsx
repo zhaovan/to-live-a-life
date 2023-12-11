@@ -30,7 +30,7 @@ const story = [
     age: 20,
     textBlock: [
       {
-        text: "school occurs. you bring out your lunchbox filled with [INSERT]. you nibble a corner and it reminds you that there are worlds within worlds.",
+        text: "school slaps you awake for the first time. you bring out your lunchbox filled with [INSERT]. you nibble a corner and it reminds you that there are worlds within worlds.",
         textOptions: [
           "lunchables",
           "steamed fish and rice",
@@ -135,11 +135,13 @@ export default function Home() {
           )}
         </div>
       </div>
-      <div className="border border-gray-700 w-[33vw] p-6">
-        <h1 className="text-2xl ">your journey so far</h1>
-        {journey.map((journeyItem, idx) => {
-          return <p>{journeyItem}</p>;
-        })}
+      <div className="border border-gray-700 w-[33vw] p-6 flex flex-col gap-4">
+        <h1 className="text-2xl">your journey so far</h1>
+        <div className="flex flex-col gap-2">
+          {journey.map((journeyItem, idx) => {
+            return <p key={idx}>{journeyItem}</p>;
+          })}
+        </div>
       </div>
     </div>
   );
