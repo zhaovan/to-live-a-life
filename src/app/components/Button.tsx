@@ -11,7 +11,7 @@ export default function Button({ children, handleClick }: ButtonProps) {
       className="bg-purple-200 px-3 py-2 hover:bg-purple-400"
       onClick={handleClick}
     >
-      {children}
+      <p className="text-2xl">{children}</p>
     </button>
   );
 }

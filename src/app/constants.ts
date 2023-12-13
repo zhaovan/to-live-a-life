@@ -134,3 +134,9 @@ export const endStateStory = [
   "there is no energy in scattered stardust",
   "only stillness",
 ];
+
+export const startStateStory = [
+  "according to the second law of thermodynamics, everything moves towards entropy",
+  "entropy (noun): a gradual decline into disorder",
+  "even something as complex as human birth must abide to law",
+];
