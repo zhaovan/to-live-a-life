@@ -85,9 +85,20 @@ export default function Home() {
               {story[step].buttonOptions &&
               story[step].buttonOptions.length > 0 ? (
                 story[step].buttonOptions!.map((buttonOption, idx) => {
+                  const buttonText = buttonOption.text;
+                  function handleButtonClick() {
+                    if (buttonOption.step === 0) {
+                      setStep(step + 1);
+                    } else if (buttonOption.step === -1) {
+                      setGameState(GameState.end);
+                    } else {
+                      setStep(0);
+                      setJourney([]);
+                    }
+                  }
                   return (
-                    <Button key={idx} handleClick={handleClick}>
-                      {buttonOption}
+                    <Button key={idx} handleClick={handleButtonClick}>
+                      {buttonText}
                     </Button>
                   );
                 })

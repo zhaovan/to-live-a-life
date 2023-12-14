@@ -45,9 +45,9 @@ export const story = [
       },
     ],
     buttonOptions: [
-      "to be reborn",
-      "to love, to be loved",
-      "for mercy and understanding",
+      { text: "to be reborn", step: 1 },
+      { text: "to love, to be loved", step: 0 },
+      { text: "for mercy and understanding", step: -1 },
     ],
   },
   {
