@@ -15,8 +15,12 @@ export default function Home() {
 
   const textRef = useRef<HTMLParagraphElement>(null);
   const [gameState, setGameState] = useState(GameState.start);
-  const audio = new Audio("/song.mp3");
-  const audioRef = useRef<HTMLAudioElement>(audio);
+
+  const [audio, setAudio] = useState<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    setAudio(new Audio("/song.mp3"));
+  }, []);
 
   function handleClick() {
     if (textRef.current) {
@@ -39,8 +43,6 @@ export default function Home() {
     setStep(step + 1);
   }
 
-  useEffect(() => {}, []);
-
   const maxAge = story[step].age;
   const minAge = step === 0 ? 0 : story[step].age - 9;
   const randomAge = Math.floor(Math.random() * (maxAge - minAge)) + minAge;
@@ -48,9 +50,9 @@ export default function Home() {
     <div
       className="h-screen w-full flex gap-6 p-6 font-facade bg-yellow-50"
       onMouseMove={() => {
-        if (audioRef.current.paused) {
-          audioRef.current.play();
-          audioRef.current.loop = true;
+        if (audio.paused) {
+          audio.play();
+          audio.loop = true;
         }
       }}
     >
