@@ -15,7 +15,8 @@ export default function Home() {
 
   const textRef = useRef<HTMLParagraphElement>(null);
   const [gameState, setGameState] = useState(GameState.start);
-  const audioRef = useRef<HTMLAudioElement>(new Audio("/song.mp3"));
+  const audio = new Audio("/song.mp3");
+  const audioRef = useRef<HTMLAudioElement>(audio);
 
   function handleClick() {
     if (textRef.current) {
