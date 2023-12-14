@@ -83,7 +83,7 @@ export default function Home() {
               </p>
 
               {story[step].buttonOptions &&
-              story[step].buttonOptions.length > 0 ? (
+              story[step].buttonOptions!.length > 0 ? (
                 story[step].buttonOptions!.map((buttonOption, idx) => {
                   const buttonText = buttonOption.text;
                   function handleButtonClick() {
