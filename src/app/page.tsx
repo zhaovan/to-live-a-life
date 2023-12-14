@@ -16,7 +16,7 @@ export default function Home() {
   const textRef = useRef<HTMLParagraphElement>(null);
   const [gameState, setGameState] = useState(GameState.start);
 
-  const [audio, setAudio] = useState<HTMLAudioElement>(null);
+  const [audio, setAudio] = useState<HTMLAudioElement>();
 
   useEffect(() => {
     setAudio(new Audio("/song.mp3"));
@@ -50,7 +50,7 @@ export default function Home() {
     <div
       className="h-screen w-full flex gap-6 p-6 font-facade bg-yellow-50"
       onMouseMove={() => {
-        if (audio.paused) {
+        if (audio?.paused) {
           audio.play();
           audio.loop = true;
         }
