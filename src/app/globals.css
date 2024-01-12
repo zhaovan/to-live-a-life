@@ -3,10 +3,15 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Facade";
-  src: url("/fonts/Facade-Ouest.otf") format("opentype");
+  font-family: Lovely;
+  src: url("/fonts/LovelyLove.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
+}
+
+@font-face {
+  font-family: Convo;
+  src: url("/fonts/Convo-Regular.otf") format("opentype");
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -17,4 +22,61 @@
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.stars:nth-child(even) {
+  color: #f8f804;
+}
+
+.stars:nth-child(odd) {
+  color: #9370db;
+}
+
+.stars {
+  position: absolute;
+  font-size: 20px;
+  animation: twinkle 1s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.button {
+  box-shadow: 0px 2px 0 0;
+}
+
+.button:hover {
+  box-shadow: none;
+  top: 2px;
+  left: 2px;
+}
+
+.bg {
+  background-image: url("/background.png");
+  background-size: contain;
+  animation: slide 100s infinite;
+}
+
+body {
+  color: #f8f804;
+  font-family: Convo;
+}
+
+.lovely {
+  font-family: Lovely;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50vw);
+  }
 }

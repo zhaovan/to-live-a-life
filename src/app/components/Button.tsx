@@ -8,10 +8,10 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 export default function Button({ children, handleClick }: ButtonProps) {
   return (
     <button
-      className="bg-purple-200 px-3 py-2 hover:bg-purple-400"
+      className="button relative  text-slate-950 bg-purple-200 px-3 py-2 w-40 hover:bg-purple-300 border border-black rounded-full"
       onClick={handleClick}
     >
-      <p className="text-2xl">{children}</p>
+      <p className="text-xl">{children}</p>
     </button>
   );
 }

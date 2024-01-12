@@ -3,8 +3,13 @@ export const story = [
     age: 0,
     textBlock: [
       {
-        text: "you are born from [INSERT]",
-        textOptions: ["a c section", "force", "an open question"],
+        text: "how you were born: [INSERT]",
+        textOptions: [
+          "a c section",
+          "force",
+          "an open question",
+          "a little life",
+        ],
       },
     ],
   },
@@ -26,12 +31,21 @@ export const story = [
     age: 20,
     textBlock: [
       {
-        text: "school slaps you awake for the first time. you bring out your lunchbox filled with [INSERT]. you nibble a corner and it reminds you that there are worlds within worlds.",
+        text: "school slaps you awake for the first time. you bring out your lunchbox filled with [INSERT]. you nibble a corner and it reminds you that there are ",
         textOptions: [
           "lunchables",
           "steamed fish and rice",
           "nothing",
           "a peanut butter and jelly sandwich",
+        ],
+      },
+      {
+        text: "[INSERT]",
+        textOptions: [
+          "worlds within worlds.",
+          "better things to worry about.",
+          "lives to explore",
+          "men to kiss",
         ],
       },
     ],
@@ -55,7 +69,7 @@ export const story = [
     textBlock: [
       {
         text: "a [INSERT] ",
-        textOptions: ["boy", "girl", "bird"],
+        textOptions: ["boy", "girl", "bird", "genie"],
       },
       {
         text: "comes up and asks for the [INSERT] ",
@@ -93,8 +107,8 @@ export const story = [
     age: 70,
     textBlock: [
       {
-        text: "placeholder",
-        textOptions: ["placeholder"],
+        text: "you missed when the [INSERT] kissed the sun",
+        textOptions: ["air", "father", "dirt", "skin", "grave"],
       },
     ],
   },
@@ -111,8 +125,12 @@ export const story = [
     age: 90,
     textBlock: [
       {
-        text: "everyone you love has died. you too, shall pass. their memories live within you.",
-        textOptions: [],
+        text: "[INSERT]",
+        textOptions: [
+          "everyone you love has died",
+          "you too, shall pass",
+          "you wonder if we can love again?",
+        ],
       },
     ],
   },
@@ -120,16 +138,19 @@ export const story = [
     age: 100,
     textBlock: [
       {
-        text: "when he turned this age, he wished that he could be born again. what did he mean by that?",
-        textOptions: [],
+        text: "he wished that he could be born again. to live a live so complex and rich that one could taste the fruit of his ether. [INSERT]",
+        textOptions: [
+          "what did he mean by that?",
+          "did you have the chance to?",
+          "would you wish for that?",
+        ],
       },
     ],
   },
 ];
 
 export const endStateStory = [
-  "in death, the second law of thermodynamics is broken",
-  "if humans are bundles of complexity, then what is death?",
+  "if humans are bundles of understanding, then what is death?",
   "a breakage of entropy",
   "there is no energy in scattered stardust",
   "only stillness",
