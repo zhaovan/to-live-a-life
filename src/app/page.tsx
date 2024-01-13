@@ -95,7 +95,7 @@ export default function Home() {
         alt={""}
       />
       <Stars journeyStep={totalStep} />
-      <Journey journey={journey} />
+      {/* <Journey journey={journey} /> */}
       <div
         className=" relative h-screen w-full flex gap-6 p-6 "
         suppressHydrationWarning
@@ -108,7 +108,7 @@ export default function Home() {
       >
         <div className="w-full p-24  flex items-end justify-center">
           <div
-            className="absolute w-1/2"
+            className="absolute w-1/2 flex flex-col gap-4"
             suppressHydrationWarning
             style={{
               left: 2 + Math.random() * 50 + "vw",
@@ -116,12 +116,12 @@ export default function Home() {
             }}
           >
             {gameState === GameState.start && (
-              <>
+              <div>
                 <TitleText>{startStateStory[step]}</TitleText>
-              </>
+              </div>
             )}
             {gameState === GameState.journey && (
-              <>
+              <div>
                 <TitleText>you are {age} years old</TitleText>
                 <p className="text-xl w-96" ref={textRef}>
                   {story[step].textBlock.map((textBlock, idx) => {
@@ -136,47 +136,47 @@ export default function Home() {
                     return <span key={idx}>{lifeChoice}</span>;
                   })}
                 </p>
-              </>
+              </div>
             )}
             {gameState === GameState.end && (
-              <>
+              <div>
                 <TitleText>{endStateStory[step]}</TitleText>
-              </>
+              </div>
+            )}
+            {!finished && (
+              <div className="flex flex-col relative gap-2">
+                {story[step].buttonOptions &&
+                gameState === GameState.journey &&
+                story[step].buttonOptions!.length > 0 ? (
+                  story[step].buttonOptions!.map((buttonOption, idx) => {
+                    const buttonText = buttonOption.text;
+                    function handleButtonClick() {
+                      if (buttonOption.step === 0) {
+                        setStep(step + 1);
+                      } else if (buttonOption.step === -1) {
+                        setGameState(GameState.end);
+                      } else {
+                        setStep(0);
+                        setAge(0);
+                        setJourney([]);
+                      }
+                    }
+                    return (
+                      <Button key={idx} handleClick={handleButtonClick}>
+                        {buttonText}
+                      </Button>
+                    );
+                  })
+                ) : (
+                  <Button handleClick={handleClick}>
+                    {gameState === GameState.journey
+                      ? "live a little more"
+                      : "reach for the stardust"}
+                  </Button>
+                )}
+              </div>
             )}
           </div>
-          {!finished && (
-            <div className="flex flex-col relative bottom-40 gap-2">
-              {story[step].buttonOptions &&
-              gameState === GameState.journey &&
-              story[step].buttonOptions!.length > 0 ? (
-                story[step].buttonOptions!.map((buttonOption, idx) => {
-                  const buttonText = buttonOption.text;
-                  function handleButtonClick() {
-                    if (buttonOption.step === 0) {
-                      setStep(step + 1);
-                    } else if (buttonOption.step === -1) {
-                      setGameState(GameState.end);
-                    } else {
-                      setStep(0);
-                      setAge(0);
-                      setJourney([]);
-                    }
-                  }
-                  return (
-                    <Button key={idx} handleClick={handleButtonClick}>
-                      {buttonText}
-                    </Button>
-                  );
-                })
-              ) : (
-                <Button handleClick={handleClick}>
-                  {gameState === GameState.journey
-                    ? "i want to live more"
-                    : "touch the stardust"}
-                </Button>
-              )}
-            </div>
-          )}
         </div>
       </div>
     </div>
